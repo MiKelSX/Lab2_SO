@@ -11,7 +11,7 @@
 
 ## Descripción
 
-Programa en C++ que simula un escenario de supervivencia en el Ártico, donde un grupo de 4 equipos debe colaborar para recolectar recursos esenciales durante un número determinado de días. La simulación utiliza multiprocesamiento para que cada equipo opere de forma concurrente y memoria compartida como mecanismo de comunicación inter-proceso (IPC) para que un proceso coordinador centralice los resultados y evalúe el estado del grupo. El objetivo es sobrevivir manteniendo la moral y logrando el rescate.
+Programa en C++ que simula un escenario de supervivencia en el Ártico, donde 4 equipos colaboran para recolectar recursos esenciales durante un número determinado de días. La simulación utiliza multiprocesamiento (fork), memoria compartida (IPC) y generación robusta de aleatoriedad, permitiendo que cada equipo opere de manera concurrente y reporte sus resultados a un proceso coordinador central. El objetivo es sobrevivir manteniendo la moral y lograr el rescate.
 
 -----
 
@@ -81,6 +81,15 @@ Programa en C++ que simula un escenario de supervivencia en el Ártico, donde un
 
 -----
 
+### Estructura de Proyecto:
+```
+Lab2_SO/
+├── LAB2_CORNEJO_LOBOS.cpp   # Código fuente principal
+├── Makefile                 # Archivo de compilación
+├── README.md                # Este archivo
+```
+
+-----
 ## Supuestos Utilizados
 
   * La simulación se ejecuta en un entorno tipo UNIX (Linux, macOS) que soporte las llamadas al sistema `fork` y `shmget`.
