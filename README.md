@@ -15,6 +15,69 @@ Programa en C++ que simula un escenario de supervivencia en el Ártico, donde 4 
 
 -----
 
+## Especificación del Sistema
+
+### Estructura de Procesos
+- **1 proceso Coordinador** (proceso padre)
+- **4 procesos Equipos de Recolección** (procesos hijos con `fork()`)
+
+### Especialización de Equipos
+1. **Equipo Agua**: Recolecta y purifica agua  
+2. **Equipo Alimentos**: Caza, pesca y recolecta alimentos  
+3. **Equipo Construcción**: Recolecta materiales y construye refugios  
+4. **Equipo Señales**: Mantiene fogatas y señales de rescate  
+
+### Mecánica Diaria
+1. **Asignación de tareas**: Coordinador inicia equipos  
+2. **Recolección simultánea**: Trabajo paralelo con `fork()`  
+3. **Resultados aleatorios**: Sistema probabilístico  
+4. **Reporte**: Comunicación vía memoria compartida  
+5. **Evaluación**: Verificación de supervivencia  
+
+---
+
+## Sistema de Cálculos
+
+### Probabilidades de Éxito
+
+- **30%**: Éxito total (100% del objetivo)  
+- **50%**: Éxito parcial (50–80% del objetivo)  
+- **20%**: Fracaso (5–29% del objetivo)  
+
+### Rangos de Unidades Base
+
+- **Agua**: 6–14 unidades  
+- **Alimentos**: 10–20 unidades  
+- **Construcción**: 4–12 unidades  
+- **Señales**: 2–8 unidades  
+
+### Cálculo de Unidades Finales
+
+```cpp
+int unidades = (objetivo_base * porcentaje) / 100 + bonus(0–2);
+```
+### Recursos Mínimos Diarios
+
+- **Agua**: 8 unidades  
+- **Alimentos**: 12 unidades  
+- **Construcción**: 4 unidades  
+- **Señales**: 2 unidades  
+
+### Penalizaciones de Moral
+
+- Agua faltante: `(8 - recolectado) × 3`  
+- Alimentos faltantes: `(12 - recolectado) × 2`  
+- Construcción faltante: `(4 - recolectado) × 1`  
+- Señales faltantes: `(2 - recolectado) × 2`  
+
+### Condiciones de Terminación
+
+- **Victoria**: 10 días consecutivos con señales suficientes  
+- **Derrota**: Moral ≤ 0 (inicia en 100)  
+- **Límite**: Días definidos por usuario (10–30)  
+
+-----
+
 ## Bibliotecas Utilizadas
 
   * `iostream`: Para operaciones de entrada/salida y mostrar el estado de la simulación en consola.
